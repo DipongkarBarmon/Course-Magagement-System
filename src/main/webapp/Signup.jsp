@@ -307,7 +307,7 @@
                             <div class="input-group-custom">
                                 <i class="fas fa-user"></i>
                                 <input type="text" class="form-control" name="name" 
-                                       placeholder="John Doe" required>
+                                       placeholder="Dipongkar Barmon" required>
                             </div>
                         </div>
                     </div>
@@ -320,7 +320,7 @@
                             <div class="input-group-custom">
                                 <i class="fas fa-id-card"></i>
                                 <input type="text" class="form-control" name="id" 
-                                       placeholder="ID12345" required>
+                                       placeholder="ID-2022331084" required>
                             </div>
                         </div>
                     </div>
@@ -335,7 +335,7 @@
                             <div class="input-group-custom">
                                 <i class="fas fa-envelope"></i>
                                 <input type="email" class="form-control" name="email" 
-                                       placeholder="your.email@example.com" required>
+                                       placeholder="your email@gmail.com" required>
                             </div>
                         </div>
                     </div>
@@ -348,7 +348,7 @@
                             <div class="input-group-custom">
                                 <i class="fas fa-phone"></i>
                                 <input type="tel" class="form-control" name="phone" 
-                                       placeholder="+1 234 567 8900" required>
+                                       placeholder="01712345689" required>
                             </div>
                         </div>
                     </div>
@@ -452,28 +452,5 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Password toggle for password field
-        const togglePassword = document.getElementById('togglePassword');
-        const password = document.getElementById('password');
-        
-        togglePassword.addEventListener('click', function() {
-            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-            password.setAttribute('type', type);
-            this.classList.toggle('fa-eye');
-            this.classList.toggle('fa-eye-slash');
-        });
-
-        // Password toggle for confirm password field
-        const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
-        const confirmPassword = document.getElementById('confirmPassword');
-        
-        toggleConfirmPassword.addEventListener('click', function() {
-            const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
-            confirmPassword.setAttribute('type', type);
-            this.classList.toggle('fa-eye');
-            this.classList.toggle('fa-eye-slash');
-        });
-    </script>
 </body>
 </html>

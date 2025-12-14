@@ -260,14 +260,5 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  // Auto-focus on OTP input
-  document.querySelector('.otp-input').focus();
-  
-  // Allow only numbers
-  document.querySelector('.otp-input').addEventListener('input', function(e) {
-    this.value = this.value.replace(/[^0-9]/g, '');
-  });
-</script>
 </body>
 </html>
