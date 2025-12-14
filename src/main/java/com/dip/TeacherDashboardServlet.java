@@ -14,7 +14,6 @@ public class TeacherDashboardServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // 1. Get the logged-in teacher ID from session
         HttpSession session = request.getSession(false);
         if(session == null || session.getAttribute("userId") == null) {
             response.sendRedirect("Login.jsp");
@@ -22,7 +21,7 @@ public class TeacherDashboardServlet extends HttpServlet {
         }
         int teacherId = (Integer) session.getAttribute("userId");
         System.out.println("Teacher ID from session: " + teacherId);
-        // 2. Connect to DB and fetch courses
+   
         List<Course> courseList = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -53,10 +52,9 @@ public class TeacherDashboardServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        // 3. Put the course list into request scope
+       
         request.setAttribute("courses", courseList);
 
-        // 4. Forward to JSP
         RequestDispatcher rd = request.getRequestDispatcher("teacherDashboard.jsp");
         rd.forward(request, response);
     }

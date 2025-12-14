@@ -12,15 +12,16 @@ public class AdminServlet extends HttpServlet {
     private Connection conn;
 
     @Override
-    public void init() {
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/Course_Management_System",
-                "root", "password"
+                "root", "dip"
             );
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new ServletException("DB connection failed", e);
         }
     }
 
@@ -45,7 +46,7 @@ public class AdminServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        RequestDispatcher rd = req.getRequestDispatcher("adminDashboard.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("AdminDashboard.jsp");
         rd.forward(req, resp);
     }
 

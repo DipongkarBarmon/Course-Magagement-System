@@ -12,9 +12,9 @@ public class Logindao {
         pass = pass.trim();
         user = user.trim();
         String sql = "SELECT IdNumber,Mail,Password, RegisterAs FROM SignupDetails WHERE Mail=? AND Password=? AND RegisterAs=?";
-        System.out.println(user);
-        System.out.println(pass);
-        System.out.println(email);
+//        System.out.println(user);
+//        System.out.println(pass);
+//        System.out.println(email);
         
         
         try {

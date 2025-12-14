@@ -19,7 +19,6 @@ public class DeleteCourse extends HttpServlet {
 
         String courseCode = request.getParameter("id");
 
-        // Validate input: CourseCode should not be null or empty
         if (courseCode == null || courseCode.trim().isEmpty()) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid CourseCode");
             return;
@@ -30,26 +29,21 @@ public class DeleteCourse extends HttpServlet {
 
             try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS)) {
 
-                // Optional: delete related entries first if foreign key exists
-                /*
-                try (PreparedStatement psRel = conn.prepareStatement(
-                        "DELETE FROM student_courses WHERE course_code = ?")) {
+                 try (PreparedStatement psRel = conn.prepareStatement(
+                        "DELETE FROM StudentCourses WHERE CourseCode = ?")) {
                     psRel.setString(1, courseCode);
                     psRel.executeUpdate();
                 }
-                */
 
-                // Delete course by CourseCode
+                 
                 try (PreparedStatement ps = conn.prepareStatement(
                         "DELETE FROM Courses WHERE CourseCode = ?")) {
                     ps.setString(1, courseCode);
                     int rowsAffected = ps.executeUpdate();
 
                     if (rowsAffected > 0) {
-                        // Successfully deleted
                         response.sendRedirect("AdminDashboard.jsp");
                     } else {
-                        // No course found with this code
                         response.sendError(HttpServletResponse.SC_NOT_FOUND, "Course not found");
                     }
                 }
@@ -64,7 +58,6 @@ public class DeleteCourse extends HttpServlet {
         }
     }
 
-    // Block GET requests for safety
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

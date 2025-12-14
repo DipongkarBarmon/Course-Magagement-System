@@ -15,19 +15,15 @@ import javax.servlet.http.HttpSession;
 public class Verify extends HttpServlet {
  
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String otp = request.getParameter("otp1")
-	            + request.getParameter("otp2")
-	            + request.getParameter("otp3")
-	            + request.getParameter("otp4")
-	            + request.getParameter("otp5")
-	            + request.getParameter("otp6");
+ 
+		String otp=request.getParameter("otp");
 		HttpSession session =request.getSession();
 		String sessionOtp=(String)session.getAttribute("Code");
 		
 		if (sessionOtp != null && sessionOtp.equals(otp)) {
               response.sendRedirect("VeificationSuccessfull.jsp");
         } else {
-            response.getWriter().println("<h2>❌ Invalid OTP. Please try again.</h2>");
+            response.getWriter().println("<h2>Invalid OTP. Please try again.</h2>");
            
         }
 	} 

@@ -28,6 +28,6 @@ public class Student {
                 "id=" + id +
                 ", fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
-                '}';
+                '}';	
     }
 }

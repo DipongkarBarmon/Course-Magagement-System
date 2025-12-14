@@ -23,7 +23,7 @@ public class RegisterCourseServlet extends HttpServlet {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(url, user, pass);
 
-            // Check if already registered
+            // Check if already enrolled
             PreparedStatement checkStmt = conn.prepareStatement(
                 "SELECT * FROM StudentCourses WHERE StudentId=? AND CourseCode=?");
             checkStmt.setInt(1, studentId);
@@ -35,7 +35,7 @@ public class RegisterCourseServlet extends HttpServlet {
                 return;
             }
 
-            // Insert registration
+            // Insert new enrollment
             PreparedStatement ps = conn.prepareStatement(
                 "INSERT INTO StudentCourses (StudentId, CourseCode) VALUES (?, ?)");
             ps.setInt(1, studentId);
@@ -45,6 +45,7 @@ public class RegisterCourseServlet extends HttpServlet {
             ps.close();
             conn.close();
 
+            // Redirect back to dashboard
             response.sendRedirect("StudentDashboard.jsp");
 
         } catch (Exception e) {

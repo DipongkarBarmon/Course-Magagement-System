@@ -21,7 +21,6 @@ public class AddCourse extends HttpServlet {
             Connection conn = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/Course_Management_System", "root", "dip");
 
-            // ✅ Use correct column names (CourseName, TeacherId)
             PreparedStatement ps = conn.prepareStatement(
                 "INSERT INTO Courses(CourseName, CourseCode ,TeacherId) VALUES (?, ?,?)");
 
@@ -37,8 +36,7 @@ public class AddCourse extends HttpServlet {
 
             ps.executeUpdate();
             conn.close();
-
-            // ✅ Redirect to dashboard after insertion
+            
             response.sendRedirect("AdminDashboard.jsp");
 
         } catch (Exception e) {
